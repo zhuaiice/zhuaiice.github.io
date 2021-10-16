@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhuaiice.github.io</id>
     <title>隐藏的位面</title>
-    <updated>2021-10-16T02:52:25.685Z</updated>
+    <updated>2021-10-16T02:56:21.142Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhuaiice.github.io"/>
     <link rel="self" href="https://zhuaiice.github.io/atom.xml"/>
@@ -10,6 +10,41 @@
     <logo>https://zhuaiice.github.io/images/avatar.png</logo>
     <icon>https://zhuaiice.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 隐藏的位面</rights>
+    <entry>
+        <title type="html"><![CDATA[火绒规则使用说明]]></title>
+        <id>https://zhuaiice.github.io/post/huo-rong-gui-ze-shi-yong-shuo-ming/</id>
+        <link href="https://zhuaiice.github.io/post/huo-rong-gui-ze-shi-yong-shuo-ming/">
+        </link>
+        <updated>2021-10-16T02:54:35.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>自定义规则、自动处理使用方法：</strong></p>
+<ol>
+<li>下载安装火绒安全，进入防护中心--&gt;高级防护，将“自定义防护”开关打开；</li>
+<li>进入自定义防护，点击“自定义规则”页面下方的“导入”按钮，导入“自定义规则.json”即可；<br>
+<img src="https://zhuaiice.github.io/post-images/1634352954177.png" alt="" loading="lazy"></li>
+<li>再切到“自动处理”页面，点击下方的“导入”按钮，导入“自动处理.json”即可；</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<p><strong>自定义规则、自动处理使用方法：</strong></p>
+<ol>
+<li>下载安装火绒安全，进入防护中心--&gt;高级防护，将“自定义防护”开关打开；</li>
+<li>进入自定义防护，点击“自定义规则”页面下方的“导入”按钮，导入“自定义规则.json”即可；<br>
+<img src="https://zhuaiice.github.io/post-images/1634352954177.png" alt="" loading="lazy"></li>
+<li>再切到“自动处理”页面，点击下方的“导入”按钮，导入“自动处理.json”即可；</li>
+</ol>
+<!-- more -->
+<p><strong>程序联网控制自定义处理规则使用方法</strong></p>
+<ol>
+<li>打开火绒，进入防护中心--&gt;系统防护，将“联网控制”开关打开；</li>
+<li>进入联网控制，点击下方的“联网设置”，新程序联网时选择“允许联网”，保存；</li>
+<li>再点击“导入”按钮，导入“联网控制.json”即可。<br>
+<img src="https://zhuaiice.github.io/post-images/1634352972348.png" alt="" loading="lazy"></li>
+</ol>
+<hr>
+<p><strong>52pojie网友自定义规则更新链接：</strong><br>
+蓝奏云链接：https://dustinwinvip.lanzoui.com/b01ocqaaj<br>
+密码：zdgz</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[在线资源临时收集]]></title>
         <id>https://zhuaiice.github.io/post/zai-xian-zi-yuan-lin-shi-shou-ji/</id>
