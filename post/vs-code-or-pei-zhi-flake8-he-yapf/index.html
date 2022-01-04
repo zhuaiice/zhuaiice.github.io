@@ -13,7 +13,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    在线资源临时收集 | 隐藏的位面
+    VS Code | 配置 flake8 和 yapf | 隐藏的位面
 </title>
 <link rel="shortcut icon" href="https://zhuaiice.github.io/favicon.ico?v=1641276875020">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -107,55 +107,73 @@
             <div id="content" class="main-container-left">
                 <article class="post i-card">
                     <h2 class="post-title">
-                        在线资源临时收集
+                        VS Code | 配置 flake8 和 yapf
                     </h2>
                     <div class="post-info">
-                        <time class="post-time">2021-10-16</time>
+                        <time class="post-time">2022-01-02</time>
+                        
+                        <a href="https://zhuaiice.github.io/tag/9BAgHcVWI/"
+                            class="post-tag i-tag
+                            i-tag-error">
+                            #vscode
+                        </a>
+                        
+                        <a href="https://zhuaiice.github.io/tag/-GPowl6jXW/"
+                            class="post-tag i-tag
+                            i-tag-">
+                            #python
+                        </a>
                         
                     </div>
                     
                     <div class="post-content">
-                        <h2 id="在线视频">🌟在线视频</h2>
-<ol>
-<li><a href="http://1090ys2.com/">1090影视</a></li>
-<li><a href="http://www.dmdm2020.com/">哆咪动漫</a></li>
-<li><a href="http://www.fjisu2.com/">飞急速在线</a></li>
-<li>待添加......</li>
-</ol>
-<!-- more -->
-<hr>
-<h2 id="临时网盘">🕸临时网盘</h2>
-<ol>
-<li><a href="https://wormhole.app/">虫洞网盘</a><br>
-<strong>特点：</strong><br>
-1. 目前分享软件最高支持10个G<br>
-2. 对于大于5GB的软件，发送者需要保持网页端或Windows端打开，直到接受者下载完毕；<br>
-3. 文件保存时长为24小时，超过24小时自动删除链接</li>
-<li><a href="https://airportal.cn/">简便文件分享airportal</a><br>
-<strong>特点：</strong><br>
-1. 上传你要分享的文件，上传完成后，会获得提取码，<br>
-2. 其他人只需要进入这个网站，输入提取码，就可以下载</li>
-<li><a href="https://app.tmp.link/">钛盘</a></li>
-<li>待添加......
-<hr>
-</li>
-</ol>
-<h2 id="福利网站">🙈福利网站</h2>
-<ol>
-<li><a href="https://oook.xyz/">云盘资源分享</a></li>
-<li><a href="https://fuliba2021.net/">福利吧网站</a></li>
-<li><a href="https://yun.hei521.cn/">天翼网盘分享</a></li>
-<li><a href="http://alipan.vip/">阿里云盘资源搜索</a></li>
-<li><a href="https://www.alipanso.com/">阿里盘搜</a></li>
-<li>待添加......
-<hr>
-</li>
-</ol>
-<h2 id="其他在线工具">🦋其他在线工具</h2>
-<ol>
-<li><a href="https://image.so.com/editor">在线图片无损放大</a></li>
-<li>待添加......</li>
-</ol>
+                        <p>写在前面：<br>
+最近VS Code开始支持 Jupyter Notebook，就配置了一下（玩了一下）。想着之前的VS Code没怎么配置，也就稍微配置了一下，本篇文章是对配置 flake8 和 yapf 的一个记录。</p>
+<h1 id="1-flake8python静态代码检查工具">1. Flake8——Python静态代码检查工具：</h1>
+<p>Flake8 是由Python官方发布的一款辅助检测Python代码是否规范的工具，相对于目前热度比较高的Pylint来说，Flake8检查规则灵活，支持集成额外插件，扩展性强。Flake8是对下面三个工具的封装：<br>
+PyFlakes：静态检查Python代码逻辑错误的工具。<br>
+Pep8： 静态检查PEP8编码风格的工具。<br>
+NedBatchelder’s McCabe script：静态分析Python代码复杂度的工具。<br>
+不光对以上三个工具的封装，Flake8还提供了扩展的开发接口。</p>
+<p>官方文档：https://pypi.python.org/pypi/flake8/</p>
+<p>——参考：Python静态代码检查工具Flake8</p>
+<h1 id="2-yapfpython代码格式化工具">2. yapf——python代码格式化工具：</h1>
+<p>YAPF（Yet Another Python Formatter）是Google开源的一个用来格式化Python代码的工具，可以一键美化代码。支持2种代码规范：PEP8、Google style</p>
+<h1 id="3-安装flake8-和-yapf">3. 安装flake8 和 yapf：</h1>
+<p>打开命令行（cmd），按照下面的安装步骤：<br>
+① 在cmd输入pip3 list，检查是否已存在需要的包<br>
+② 继续输入pip3 install flake8，下载安装 flake8<br>
+③ 继续输入pip3 install yapf，下载安装 yapf</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15175892-da502bfd1121032e.gif" alt="用VScode配置Python开发环境" loading="lazy"><br>
+图片来源：用VScode配置Python开发环境</p>
+<h1 id="4-配置vs-code">4. 配置VS Code：</h1>
+<p>在命令行下安装好 flake8 和 yapf 后（这里默认VS Code已经装好了Python插件），我们需要打开VS Code的 用户设置（setting.json），在里面添加下面的代码：</p>
+<pre><code class="language-python">{
+    &quot;python.linting.flake8Enabled&quot;: true,
+    &quot;python.formatting.provider&quot;: &quot;yapf&quot;,
+    &quot;python.linting.flake8Args&quot;: [&quot;--max-line-length=248&quot;], # 设置单行最长字符限制
+    &quot;python.linting.pylintEnabled&quot;: false # 关闭pylint工具
+}
+</code></pre>
+<h2 id="41-为什么需要设置单行最长字符限制">4.1 为什么需要设置单行最长字符限制？</h2>
+<p>在使用静态代码检查工具 flake8 来规范python代码时，当 一行字符超过79个 时会出现提示：<br>
+若是厌烦 flake8 死板的单行长度不得超过 79 个字符的限制，flake8有个 --max-line-length=n 配置选项可用来 设置单行最长字符限制。<br>
+使用关键字flake搜索VS Code的用户设置后，发现有一项 是python.linting.flake8Args:[ ] ，他的作用是在每次调用 flake8 时进行参数设置，可在 settings.json 中添加需要设置需要提醒的最大字符数，例如：<br>
+&quot;python.linting.flake8Args&quot;: [&quot;--max-line-length=248&quot;]<br>
+——参考：vscode中对flake8（python静态代码检查工具）和yapf（python代码格式化工具）的设置</p>
+<h2 id="42-如何打开-settingsjson">4.2 如何打开 Settings.json ？</h2>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/15175892-20e67b236838d317.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/15175892-ce6039d0b772ca9a.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/15175892-23039baadc6e0676.png" alt="" loading="lazy"></figure>
+<h1 id="5-演示">5. 演示：</h1>
+<p>在VS Code中，按下快捷键 Alt+Shift+F 即可自动格式化代码。</p>
+<p>操作起来特别简单，给大家简单的演示下。<br>
+<img src="https://upload-images.jianshu.io/upload_images/15175892-09c9fc27da3b030c.gif" alt="" loading="lazy"></p>
+<p>图片来源：用VScode配置Python开发环境</p>
+<p>作者：0与1的邂逅<br>
+链接：https://www.jianshu.com/p/53cd688185af<br>
+来源：简书<br>
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 
                     </div>
                 </article>
@@ -163,9 +181,9 @@
                 
                 <div class="next-post">
                     <div class="next">下一篇</div>
-                    <a href="https://zhuaiice.github.io/post/huo-rong-gui-ze-shi-yong-shuo-ming/">
+                    <a href="https://zhuaiice.github.io/post/gan-diao-a-li-xi-ruan-jian-de-liu-mang-jin-cheng-alibabaprotectexe/">
                         <h3 class="post-title">
-                            火绒规则使用说明
+                            阿里系软件的流氓进程——AlibabaProtect.exe
                         </h3>
                     </a>
                 </div>
@@ -204,14 +222,16 @@
         <div class="toc-title i-card-title">目录</div>
         <div class="toc-content">
             <ul class="markdownIt-TOC">
-<li>
+<li><a href="#1-flake8python%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5%E5%B7%A5%E5%85%B7">1. Flake8——Python静态代码检查工具：</a></li>
+<li><a href="#2-yapfpython%E4%BB%A3%E7%A0%81%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%B7%A5%E5%85%B7">2. yapf——python代码格式化工具：</a></li>
+<li><a href="#3-%E5%AE%89%E8%A3%85flake8-%E5%92%8C-yapf">3. 安装flake8 和 yapf：</a></li>
+<li><a href="#4-%E9%85%8D%E7%BD%AEvs-code">4. 配置VS Code：</a>
 <ul>
-<li><a href="#%E5%9C%A8%E7%BA%BF%E8%A7%86%E9%A2%91">🌟在线视频</a></li>
-<li><a href="#%E4%B8%B4%E6%97%B6%E7%BD%91%E7%9B%98">🕸临时网盘</a></li>
-<li><a href="#%E7%A6%8F%E5%88%A9%E7%BD%91%E7%AB%99">🙈福利网站</a></li>
-<li><a href="#%E5%85%B6%E4%BB%96%E5%9C%A8%E7%BA%BF%E5%B7%A5%E5%85%B7">🦋其他在线工具</a></li>
+<li><a href="#41-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%AE%BE%E7%BD%AE%E5%8D%95%E8%A1%8C%E6%9C%80%E9%95%BF%E5%AD%97%E7%AC%A6%E9%99%90%E5%88%B6">4.1 为什么需要设置单行最长字符限制？</a></li>
+<li><a href="#42-%E5%A6%82%E4%BD%95%E6%89%93%E5%BC%80-settingsjson">4.2 如何打开 Settings.json ？</a></li>
 </ul>
 </li>
+<li><a href="#5-%E6%BC%94%E7%A4%BA">5. 演示：</a></li>
 </ul>
 
         </div>

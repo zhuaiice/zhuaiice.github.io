@@ -2,45 +2,565 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zhuaiice.github.io</id>
     <title>隐藏的位面</title>
-    <updated>2021-10-16T03:07:07.306Z</updated>
+    <updated>2022-01-04T06:15:45.242Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zhuaiice.github.io"/>
     <link rel="self" href="https://zhuaiice.github.io/atom.xml"/>
     <subtitle>网海中的一块无名空间</subtitle>
     <logo>https://zhuaiice.github.io/images/avatar.png</logo>
     <icon>https://zhuaiice.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, 隐藏的位面</rights>
+    <rights>All rights reserved 2022, 隐藏的位面</rights>
     <entry>
-        <title type="html"><![CDATA[火绒规则使用说明]]></title>
-        <id>https://zhuaiice.github.io/post/huo-rong-gui-ze-shi-yong-shuo-ming/</id>
-        <link href="https://zhuaiice.github.io/post/huo-rong-gui-ze-shi-yong-shuo-ming/">
+        <title type="html"><![CDATA[详解Python中pyautogui库的最全使用方法]]></title>
+        <id>https://zhuaiice.github.io/post/xiang-jie-python-zhong-pyautogui-ku-de-zui-quan-shi-yong-fang-fa/</id>
+        <link href="https://zhuaiice.github.io/post/xiang-jie-python-zhong-pyautogui-ku-de-zui-quan-shi-yong-fang-fa/">
         </link>
-        <updated>2021-10-16T02:54:35.000Z</updated>
-        <summary type="html"><![CDATA[<p><strong>自定义规则、自动处理使用方法：</strong></p>
-<ol>
-<li>下载安装火绒安全，进入防护中心--&gt;高级防护，将“自定义防护”开关打开；</li>
-<li>进入自定义防护，点击“自定义规则”页面下方的“导入”按钮，导入“自定义规则.json”即可；</li>
-</ol>
+        <updated>2022-01-03T03:55:22.000Z</updated>
+        <summary type="html"><![CDATA[<p>在使用Python做脚本的话，有两个库可以使用，一个为PyUserInput库，另一个为pyautogui库。就本人而言，我更喜欢使用pyautogui库，该库功能多，使用便利。下面给大家介绍一下pyautogui库的使用方法。在<a href="https://so.csdn.net/so/search?q=cmd">cmd</a>命令框中输入</p>
+<pre><code class="language-undefined">pip install pyautogui
+</code></pre>
 ]]></summary>
-        <content type="html"><![CDATA[<p><strong>自定义规则、自动处理使用方法：</strong></p>
-<ol>
-<li>下载安装火绒安全，进入防护中心--&gt;高级防护，将“自定义防护”开关打开；</li>
-<li>进入自定义防护，点击“自定义规则”页面下方的“导入”按钮，导入“自定义规则.json”即可；</li>
-</ol>
+        <content type="html"><![CDATA[<p>在使用Python做脚本的话，有两个库可以使用，一个为PyUserInput库，另一个为pyautogui库。就本人而言，我更喜欢使用pyautogui库，该库功能多，使用便利。下面给大家介绍一下pyautogui库的使用方法。在<a href="https://so.csdn.net/so/search?q=cmd">cmd</a>命令框中输入</p>
+<pre><code class="language-undefined">pip install pyautogui
+</code></pre>
 <!-- more -->
-<p><img src="https://zhuaiice.github.io/post-images/1634352954177.png" alt="" loading="lazy"><br>
-3. 再切到“自动处理”页面，点击下方的“导入”按钮，导入“自动处理.json”即可；</p>
-<p><strong>程序联网控制自定义处理规则使用方法</strong></p>
+<p>即可安装该库！</p>
+<p><strong>常用操作</strong></p>
+<p>我们在pyautogui库中常常使用的方法，如下：</p>
+<pre><code class="language-python">import pyautogui
+pyautogui.PAUSE = 1 # 调用在执行动作后暂停的秒数，只能在执行一些pyautogui动作后才能使用，建议用time.sleep
+pyautogui.FAILSAFE = True # 启用自动防故障功能，左上角的坐标为（0，0），将鼠标移到屏幕的左上角，来抛出failSafeException异常
+# 判断(x,y)是否在屏幕上
+x, y = 122, 244
+pyautogui.onScreen(x, y) # 结果为true
+width, height = pyautogui.size() # 屏幕的宽度和高度
+print(width, height)
+</code></pre>
+<p><strong>鼠标操作</strong></p>
+<p>我们在pyautogui库对于鼠标的使用方法大体如下：</p>
+<pre><code class="language-python">import pyautogui
+currentMouseX, currentMouseY = pyautogui.position() # 鼠标当前位置
+print(currentMouseX, currentMouseY)
+# 控制鼠标移动,duration为持续时间
+for i in range(2):
+	pyautogui.moveTo(100, 100, duration=0.25) # 移动到 (100,100)
+    pyautogui.moveTo(200, 100, duration=0.25)
+    pyautogui.moveTo(200, 200, duration=0.25)
+    pyautogui.moveTo(100, 200, duration=0.25)
+    
+for i in range(2):
+    pyautogui.moveRel(50, 0, duration=0.25) # 从当前位置右移100像素
+    pyautogui.moveRel(0, 50, duration=0.25) # 向下
+    pyautogui.moveRel(-50, 0, duration=0.25) # 向左
+    pyautogui.moveRel(0, -50, duration=0.25) # 向上
+    
+# 按住鼠标左键，把鼠标拖拽到(100, 200)位置
+pyautogui.dragTo(100, 200, button='left')
+# 按住鼠标左键，用2秒钟把鼠标拖拽到(300, 400)位置
+pyautogui.dragTo(300, 400, 2, button='left')
+# 按住鼠标左键，用0.2秒钟把鼠标向上拖拽
+pyautogui.dragRel(0, -60, duration=0.2)
+
+# pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_between_clicks, button='left')
+# 其中，button属性可以设置成left，middle和right。
+pyautogui.click(10, 20, 2, 0.25, button='left')
+pyautogui.click(x=100, y=200, duration=2) # 先移动到(100, 200)再单击
+pyautogui.click() # 鼠标当前位置点击一下
+pyautogui.doubleClick() # 鼠标当前位置左击两下
+pyautogui.doubleClick(x=100, y=150, button=&quot;left&quot;) # 鼠标在（100，150）位置左击两下
+pyautogui.tripleClick() # 鼠标当前位置左击三下
+pyautogui.mouseDown() # 鼠标左键按下再松开
+pyautogui.mouseUp()
+pyautogui.mouseDown(button='right') # 按下鼠标右键
+pyautogui.mouseUp(button='right', x=100, y=200) # 移动到(100, 200)位置，然后松开鼠标右键
+
+# scroll函数控制鼠标滚轮的滚动，amount_to_scroll参数表示滚动的格数。正数则页面向上滚动，负数则向下滚动
+# pyautogui.scroll(clicks=amount_to_scroll, x=moveToX, y=moveToY)
+pyautogui.scroll(5, 20, 2)
+pyautogui.scroll(10) # 向上滚动10格
+pyautogui.scroll(-10) # 向下滚动10格
+pyautogui.scroll(10, x=100, y=100) # 移动到(100, 100)位置再向上滚动10格
+# 缓动/渐变函数可以改变光标移动过程的速度和方向。通常鼠标是匀速直线运动，这就是线性缓动/渐变函数。
+# PyAutoGUI有30种缓动/渐变函数，可以通过pyautogui.ease*?查看。
+# 开始很慢，不断加速
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInQuad)
+
+# 开始很快，不断减速
+pyautogui.moveTo(100, 100, 2, pyautogui.easeOutQuad)
+
+# 开始和结束都快，中间比较慢
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInOutQuad)
+
+# 一步一徘徊前进
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInBounce)
+
+# 徘徊幅度更大，甚至超过起点和终点
+pyautogui.moveTo(100, 100, 2, pyautogui.easeInElastic)
+</code></pre>
+<p>对于我们要获取鼠标在屏幕中的位置，我们可以采用如下代码：</p>
+<pre><code class="language-python"># 案例获取鼠标的位置，方便复制我们定位的鼠标坐标点到代码中
+import pyautogui
+import time
+# 获取鼠标位置
+def get_mouse_positon():
+  time.sleep(5) # 准备时间
+  print('开始获取鼠标位置')
+  try:
+    for i in range(10):
+      	# Get and print the mouse coordinates.
+    	x, y = pyautogui.position()
+    	positionStr = '鼠标坐标点（X,Y）为：{},{}'.format(str(x).rjust(4), str(y).rjust(4))
+    	pix = pyautogui.screenshot().getpixel((x, y)) # 获取鼠标所在屏幕点的RGB颜色
+    	positionStr += ' RGB:(' + str(pix[0]).rjust(3) + ',' + str(pix[1]).rjust(3) + ',' + str(pix[2]).rjust(3) + ')'
+    	print(positionStr)
+    	time.sleep(0.5) # 停顿时间
+    except:
+    print('获取鼠标位置失败')
+
+if __name__ == &quot;__main__&quot;:
+  get_mouse_positon()
+</code></pre>
+<p>也可以使用pyautogui库帮助文档的方法，不过本人认为使用上面的方法，更加便利。pyautogui库帮助文档的获取鼠标位置的方法如下：</p>
+<pre><code class="language-python">import pyautogui
+print('Press Ctrl-C to quit.')
+try:
+  while True:
+    # Get and print the mouse coordinates.
+    x, y = pyautogui.position()
+    positionStr = 'X:' + str(x).rjust(4) + ' Y:' + str(y).rjust(4)
+    pix = pyautogui.screenshot().getpixel((x, y)) # 获取鼠标所在屏幕点的RGB颜色
+    positionStr += ' RGB:(' + str(pix[0]).rjust(3) + ',' + str(pix[1]).rjust(3) + ',' + str(pix[2]).rjust(3) + ')'
+    print(positionStr, end='') # end='' 替换了默认的换行
+    print('\b' * len(positionStr), end='', flush=True) # 连续退格键并刷新，删除之前打印的坐标，就像直接更新坐标效果
+except KeyboardInterrupt: # 处理 Ctrl-C 按键
+  print('\nDone.')
+</code></pre>
+<p><strong>键盘操作</strong></p>
+<p>我们在pyautogui库对于键盘的使用方法大体如下：</p>
+<pre><code class="language-python">import pyautogui
+pyautogui.typewrite('Hello world!') # 输入Hello world!字符串
+pyautogui.typewrite('Hello world!', interval=0.25) # 每次输入间隔0.25秒，输入Hello world!
+pyautogui.press('enter') # 按下并松开（轻敲）回车键
+pyautogui.press(['left', 'left', 'left', 'left']) # 按下并松开（轻敲）四下左方向键
+pyautogui.keyDown('shift') # 按下`shift`键
+pyautogui.keyUp('shift') # 松开`shift`键
+pyautogui.keyDown('shift')
+pyautogui.press('4')
+pyautogui.keyUp('shift') # 输出 $ 符号的按键
+pyautogui.hotkey('ctrl', 'v') # 组合按键（Ctrl+V），粘贴功能，按下并松开'ctrl'和'v'按键
+
+# pyautogui.KEYBOARD_KEYS数组中就是press()，keyDown()，keyUp()和hotkey()函数可以输入的按键名称
+pyautogui.KEYBOARD_KEYS = ['\t', '\n', '\r', ' ', '!', '&quot;', '#', '$', '%', '&amp;', &quot;'&quot;, '(', ')', '*', '+', ',', '-', '.',
+              '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';', '&lt;', '=', '&gt;', '?', '@',
+              '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+              'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~',
+              'accept', 'add', 'alt', 'altleft', 'altright', 'apps', 'backspace', 'browserback',
+              'browserfavorites', 'browserforward', 'browserhome', 'browserrefresh', 'browsersearch',
+              'browserstop', 'capslock', 'clear', 'convert', 'ctrl', 'ctrlleft', 'ctrlright', 'decimal',
+              'del', 'delete', 'divide', 'down', 'end', 'enter', 'esc', 'escape', 'execute', 'f1', 'f10',
+              'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f2', 'f20', 'f21', 'f22',
+              'f23', 'f24', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'final', 'fn', 'hanguel', 'hangul',
+              'hanja', 'help', 'home', 'insert', 'junja', 'kana', 'kanji', 'launchapp1', 'launchapp2',
+              'launchmail', 'launchmediaselect', 'left', 'modechange', 'multiply', 'nexttrack',
+              'nonconvert', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8', 'num9',
+              'numlock', 'pagedown', 'pageup', 'pause', 'pgdn', 'pgup', 'playpause', 'prevtrack', 'print',
+              'printscreen', 'prntscrn', 'prtsc', 'prtscr', 'return', 'right', 'scrolllock', 'select',
+              'separator', 'shift', 'shiftleft', 'shiftright', 'sleep', 'space', 'stop', 'subtract', 'tab',
+              'up', 'volumedown', 'volumemute', 'volumeup', 'win', 'winleft', 'winright', 'yen', 'command',
+              'option', 'optionleft', 'optionright']
+</code></pre>
+<p><strong>弹窗操作</strong></p>
+<p>我们在pyautogui库对于弹出窗口的使用方法大体如下：</p>
+<pre><code class="language-python">import pyautogui
+# 显示一个简单的带文字和OK按钮的消息弹窗。用户点击后返回button的文字。
+pyautogui.alert(text='', title='', button='OK')
+b = pyautogui.alert(text='要开始程序么？', title='请求框', button='OK')
+print(b) # 输出结果为OK
+
+# 显示一个简单的带文字、OK和Cancel按钮的消息弹窗，用户点击后返回被点击button的文字，支持自定义数字、文字的列表。
+pyautogui.confirm(text='', title='', buttons=['OK', 'Cancel']) # OK和Cancel按钮的消息弹窗
+pyautogui.confirm(text='', title='', buttons=range(10)) # 10个按键0-9的消息弹窗
+a = pyautogui.confirm(text='', title='', buttons=range(10))
+print(a) # 输出结果为你选的数字
+
+# 可以输入的消息弹窗，带OK和Cancel按钮。用户点击OK按钮返回输入的文字，点击Cancel按钮返回None。
+pyautogui.prompt(text='', title='', default='')
+
+# 样式同prompt()，用于输入密码，消息用*表示。带OK和Cancel按钮。用户点击OK按钮返回输入的文字，点击Cancel按钮返回None。
+pyautogui.password(text='', title='', default='', mask='*')
+</code></pre>
+<p><strong>图像操作</strong></p>
+<p>我们在pyautogui库对于图像的使用方法大体如下：</p>
+<pre><code class="language-python">import pyautogui
+pyautogui.screenshot(r'C:\Users\ZDH\Desktop\PY\my_screenshot.png') # 截全屏并设置保存图片的位置和名称
+im = pyautogui.screenshot(r'C:\Users\ZDH\Desktop\PY\my_screenshot.png') # 截全屏并设置保存图片的位置和名称
+print(im) # 打印图片的属性
+
+# 不截全屏，截取区域图片。截取区域region参数为：左上角XY坐标值、宽度和高度
+pyautogui.screenshot(r'C:\Users\ZDH\Desktop\PY\region_screenshot.png', region=(0, 0, 300, 400))
+pix = pyautogui.screenshot().getpixel((220, 200)) # 获取坐标(220,200)所在屏幕点的RGB颜色
+positionStr = ' RGB:(' + str(pix[0]).rjust(3) + ',' + str(pix[1]).rjust(3) + ',' + str(pix[2]).rjust(3) + ')'
+print(positionStr) # 打印结果为RGB:( 60, 63, 65)
+pix = pyautogui.pixel(220, 200) # 获取坐标(220,200)所在屏幕点的RGB颜色与上面三行代码作用一样
+positionStr = ' RGB:(' + str(pix[0]).rjust(3) + ',' + str(pix[1]).rjust(3) + ',' + str(pix[2]).rjust(3) + ')'
+print(positionStr) # 打印结果为RGB:( 60, 63, 65)
+
+# 如果你只是要检验一下指定位置的像素值，可以用pixelMatchesColor(x,y,RGB)函数，把X、Y和RGB元组值穿入即可
+# 如果所在屏幕中(x,y)点的实际RGB三色与函数中的RGB一样就会返回True，否则返回False
+# tolerance参数可以指定红、绿、蓝3种颜色误差范围
+pyautogui.pixelMatchesColor(100, 200, (255, 255, 255))
+pyautogui.pixelMatchesColor(100, 200, (255, 255, 245), tolerance=10)
+
+# 获得文件图片在现在的屏幕上面的坐标，返回的是一个元组(top, left, width, height)
+# 如果截图没找到，pyautogui.locateOnScreen()函数返回None
+# 如果无法识别图片，先使用pip install opencv-python命令安装opencv，然后就可以在
+# pyautogui.locateOnScreen()函数中加入confidence参数，也就是识别准确度，
+#  当confidence越小时，定位的精度就会越低，函数会忽略掉一些微小的差异，这样可以
+# 提高定位的效率，实现模糊定位的功能。
+a = pyautogui.locateOnScreen(r'C:\Users\ZDH\Desktop\PY\region_screenshot.png')
+print(a) # 打印结果为Box(left=0, top=0, width=300, height=400)
+x, y = pyautogui.center(a) # 获得文件图片在现在的屏幕上面的中心坐标
+print(x, y) # 打印结果为150 200
+# 最好用if或者while语句包裹
+pic_pos = pyautogui.locateCenterOnScreen(r'C:\Users\ZDH\Desktop\PY\region_screenshot.png',grayscale=False,confidence=0.7)
+if pic_pos ==None:
+    print(&quot;没有找到对应图片&quot;)
+else:
+    x, y = pic_pos    # 这步与上面的四行代码作用一样
+    print(x, y) # 打印结果为150 200
+
+# 匹配屏幕所有与目标图片的对象，可以用for循环和list()输出
+pyautogui.locateAllOnScreen(r'C:\Users\ZDH\Desktop\PY\region_screenshot.png')
+for pos in pyautogui.locateAllOnScreen(r'C:\Users\ZDH\Desktop\PY\region_screenshot.png'):
+    print(pos)
+    
+# 打印结果为Box(left=0, top=0, width=300, height=400)
+a = list(pyautogui.locateAllOnScreen(r'C:\Users\ZDH\Desktop\PY\region_screenshot.png'))
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[VS Code | 配置 flake8 和 yapf]]></title>
+        <id>https://zhuaiice.github.io/post/vs-code-or-pei-zhi-flake8-he-yapf/</id>
+        <link href="https://zhuaiice.github.io/post/vs-code-or-pei-zhi-flake8-he-yapf/">
+        </link>
+        <updated>2022-01-02T01:18:51.000Z</updated>
+        <content type="html"><![CDATA[<p>写在前面：<br>
+最近VS Code开始支持 Jupyter Notebook，就配置了一下（玩了一下）。想着之前的VS Code没怎么配置，也就稍微配置了一下，本篇文章是对配置 flake8 和 yapf 的一个记录。</p>
+<h1 id="1-flake8python静态代码检查工具">1. Flake8——Python静态代码检查工具：</h1>
+<p>Flake8 是由Python官方发布的一款辅助检测Python代码是否规范的工具，相对于目前热度比较高的Pylint来说，Flake8检查规则灵活，支持集成额外插件，扩展性强。Flake8是对下面三个工具的封装：<br>
+PyFlakes：静态检查Python代码逻辑错误的工具。<br>
+Pep8： 静态检查PEP8编码风格的工具。<br>
+NedBatchelder’s McCabe script：静态分析Python代码复杂度的工具。<br>
+不光对以上三个工具的封装，Flake8还提供了扩展的开发接口。</p>
+<p>官方文档：https://pypi.python.org/pypi/flake8/</p>
+<p>——参考：Python静态代码检查工具Flake8</p>
+<h1 id="2-yapfpython代码格式化工具">2. yapf——python代码格式化工具：</h1>
+<p>YAPF（Yet Another Python Formatter）是Google开源的一个用来格式化Python代码的工具，可以一键美化代码。支持2种代码规范：PEP8、Google style</p>
+<h1 id="3-安装flake8-和-yapf">3. 安装flake8 和 yapf：</h1>
+<p>打开命令行（cmd），按照下面的安装步骤：<br>
+① 在cmd输入pip3 list，检查是否已存在需要的包<br>
+② 继续输入pip3 install flake8，下载安装 flake8<br>
+③ 继续输入pip3 install yapf，下载安装 yapf</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/15175892-da502bfd1121032e.gif" alt="用VScode配置Python开发环境" loading="lazy"><br>
+图片来源：用VScode配置Python开发环境</p>
+<h1 id="4-配置vs-code">4. 配置VS Code：</h1>
+<p>在命令行下安装好 flake8 和 yapf 后（这里默认VS Code已经装好了Python插件），我们需要打开VS Code的 用户设置（setting.json），在里面添加下面的代码：</p>
+<pre><code class="language-python">{
+    &quot;python.linting.flake8Enabled&quot;: true,
+    &quot;python.formatting.provider&quot;: &quot;yapf&quot;,
+    &quot;python.linting.flake8Args&quot;: [&quot;--max-line-length=248&quot;], # 设置单行最长字符限制
+    &quot;python.linting.pylintEnabled&quot;: false # 关闭pylint工具
+}
+</code></pre>
+<h2 id="41-为什么需要设置单行最长字符限制">4.1 为什么需要设置单行最长字符限制？</h2>
+<p>在使用静态代码检查工具 flake8 来规范python代码时，当 一行字符超过79个 时会出现提示：<br>
+若是厌烦 flake8 死板的单行长度不得超过 79 个字符的限制，flake8有个 --max-line-length=n 配置选项可用来 设置单行最长字符限制。<br>
+使用关键字flake搜索VS Code的用户设置后，发现有一项 是python.linting.flake8Args:[ ] ，他的作用是在每次调用 flake8 时进行参数设置，可在 settings.json 中添加需要设置需要提醒的最大字符数，例如：<br>
+&quot;python.linting.flake8Args&quot;: [&quot;--max-line-length=248&quot;]<br>
+——参考：vscode中对flake8（python静态代码检查工具）和yapf（python代码格式化工具）的设置</p>
+<h2 id="42-如何打开-settingsjson">4.2 如何打开 Settings.json ？</h2>
+<figure data-type="image" tabindex="1"><img src="https://upload-images.jianshu.io/upload_images/15175892-20e67b236838d317.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://upload-images.jianshu.io/upload_images/15175892-ce6039d0b772ca9a.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://upload-images.jianshu.io/upload_images/15175892-23039baadc6e0676.png" alt="" loading="lazy"></figure>
+<h1 id="5-演示">5. 演示：</h1>
+<p>在VS Code中，按下快捷键 Alt+Shift+F 即可自动格式化代码。</p>
+<p>操作起来特别简单，给大家简单的演示下。<br>
+<img src="https://upload-images.jianshu.io/upload_images/15175892-09c9fc27da3b030c.gif" alt="" loading="lazy"></p>
+<p>图片来源：用VScode配置Python开发环境</p>
+<p>作者：0与1的邂逅<br>
+链接：https://www.jianshu.com/p/53cd688185af<br>
+来源：简书<br>
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[阿里系软件的流氓进程——AlibabaProtect.exe]]></title>
+        <id>https://zhuaiice.github.io/post/gan-diao-a-li-xi-ruan-jian-de-liu-mang-jin-cheng-alibabaprotectexe/</id>
+        <link href="https://zhuaiice.github.io/post/gan-diao-a-li-xi-ruan-jian-de-liu-mang-jin-cheng-alibabaprotectexe/">
+        </link>
+        <updated>2021-10-20T12:07:14.000Z</updated>
+        <summary type="html"><![CDATA[<h2 id="比qqprotect还流氓">🏏比QQprotect还流氓</h2>
+<p>安装来自淘宝、支付宝相关的软件、控件会在用户系统内生成一个AlibabaProtect.exe常驻进程服务。这个服务目前没有任何文档说明是干什么用的，而且会占用用户一定的CPU计算资源，如果用户使用的是</p>
+]]></summary>
+        <content type="html"><![CDATA[<h2 id="比qqprotect还流氓">🏏比QQprotect还流氓</h2>
+<p>安装来自淘宝、支付宝相关的软件、控件会在用户系统内生成一个AlibabaProtect.exe常驻进程服务。这个服务目前没有任何文档说明是干什么用的，而且会占用用户一定的CPU计算资源，如果用户使用的是</p>
+<!-- more -->
+<p>笔记本，通常会导致在没开任何程序的情况下，散热风扇起转、产生烦心的噪音等困扰。该进程可能还监控上网行为；精准广告投放！比QQprotect还流氓！<br>
+<img src="https://zhuaiice.github.io/post-images/1634731785998.png" alt="" loading="lazy"><br>
+😡进程根本杀不掉，因为它是驱动级启动的！！！<br>
+<img src="https://zhuaiice.github.io/post-images/1634731812697.png" alt="" loading="lazy"><br>
+我发现AlibabaProtect.exe会监控全磁盘的文件变动，注意是全磁盘，但是一般轻易发现不了，因为速度非常快。但是有些时候还是会露马脚。比如，会导致移动储存设备盘符一直被锁定，即便几个小时不用也无法正常从系统删除。还有，当一个纯作为储存用途的文件夹（未关联任何程序），内部文件过于数量庞大时（数量上万，体积超过200GB），快速的连续修改这个文件夹的名字，除第一次外，后面有机会出现“当前文件夹被占用”的情况，一般这个时间很短，间隔1-2秒就可正常修改，所以要快速的连续修改名字才会出现。<br>
+给这个文件夹取个不常见的名字，然后快速的做些重命名，当弹窗文件占用的时候不要点，保持系统中断状态，然后不需要借助任何软件，使用win10自带的资源监视器，在关联句柄那里可以直接搜这个文件夹名中的关键字，不出意外，你就会搜到AlibabaProtect.exe正在访问这个路径下的某个文件。<br>
+用火绒添加AlibabaProtect的访问规则限制，分分钟几千次扫描文件的行为！<br>
+<img src="https://zhuaiice.github.io/post-images/1634731883937.png" alt="" loading="lazy"></p>
+<h2 id="尝试使用火绒干掉他">尝试使用火绒干掉他</h2>
+<p>因为它是一个服务，所以就想着火绒是否可以快速的结束它。<br>
+<img src="https://zhuaiice.github.io/post-images/1634731933127.png" alt="" loading="lazy"><br>
+找到了该项，设置为禁止启动，然后重启。<br>
+最终结果：无效。<br>
+到这里更加加深了我的恐惧，究竟是什么样的程序，怎么样的启动方式，居然通过常规手段无法禁止它启动。</p>
+<h2 id="接下来就干掉它">接下来就干掉它！</h2>
 <ol>
-<li>打开火绒，进入防护中心--&gt;系统防护，将“联网控制”开关打开；</li>
-<li>进入联网控制，点击下方的“联网设置”，新程序联网时选择“允许联网”，保存；</li>
-<li>再点击“导入”按钮，导入“联网控制.json”即可。<br>
-<img src="https://zhuaiice.github.io/post-images/1634352972348.png" alt="" loading="lazy"></li>
+<li>Windows+R运行打开%systemroot%\system32\drivers目录，找到AliPaladin*.sys文件，用火绒粉碎它！</li>
+<li>管理员模式打开cmd，输入 sc delete AlibabaProtect 回车，删除AlibabaProtect服务，得到成功的提示。</li>
+<li>重启电脑，任务管理器中alibabaprotect进程和服务已经消失。</li>
+<li>进入C:\Program Files (x86)目录，用火绒粉碎掉AlibabaProtect整个目录下的所有文件，并将这个目录权限设置成只读和拒绝访问。<br>
+<img src="https://zhuaiice.github.io/post-images/1634732003703.png" alt="" loading="lazy"><br>
+或者粗暴点，直接将所有的组和用户名全部删除，这样任何用户都没有这个文件夹的权限了！</li>
+<li>如果实在还不放心，可以在火绒里面添加自定义规则，阻止文件夹带AlibabaProtect的任何行为，比如联网，读取文件的行为。<br>
+<img src="https://zhuaiice.github.io/post-images/1634732023052.png" alt="" loading="lazy"></li>
+<li>享受清净！<br>
+<img src="https://zhuaiice.github.io/post-images/1634732100567.png" alt="" loading="lazy"></li>
 </ol>
-<hr>
-<p><strong>52pojie网友自定义规则更新链接：</strong><br>
-蓝奏云链接：https://dustinwinvip.lanzoui.com/b01ocqaaj<br>
-密码：zdgz</p>
+<h2 id="alibabaprotectexe的流氓性描述">AlibabaProtect.exe的流氓性描述</h2>
+<p>有网友将其描述为监视与间谍软件。</p>
+<p>有网友发现AlibabaProtect是以驱动的方式加载的，无法删除。</p>
+<p>有网友发现AlibabaProtect扫描磁盘。并且指出了两个现象，一个是U盘、移动硬盘等设备在弹出后，磁盘符并没有消失，表明有程序正占用该磁盘；另一个是对文件夹进行快速频繁的重命名操作时，有时会发生错误，发现AlibabaProtect在占用磁盘。（在安装阿里旺旺后，删除AlibabaProtect之前，我弹出U盘，盘符确实会停留一段时间，而且我似乎也跟踪到了它在扫描磁盘文件）</p>
+<p>有网友发现AlibabaProtect占用网络，每天上传的数据有7-8MB。</p>
+<p>有网友发现即使在服务中禁用AlibabaProtect.exe服务，其仍可以变为启用状态。（看了下我电脑上的AlibabaProtect服务，连禁用按钮都不让按，只能眼睁睁看着它扫描磁盘、上传数据）</p>
+<p>懒得勤快的博客_互联网分享精神masuit.com|ldqk.org|ldqk.xyz|masuit.tk|ldqk.tk<br>
+按照以上描述，我认为AlibabaProtect是一个流氓进程。虽然官方描述好像是更新和维护阿里的程序，但它确实是扫描了我的磁盘，还占用了大量的CPU资源。可疑的是，AlibabaProtect的安全级别很高，它伪装成驱动程序，难以删除。一般软件的更新等进程根本不需要这样，极有可能是AlibabaProtect想赖在电脑里不想走，以便达成某些不能见光的目的。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Linux基础知识]]></title>
+        <id>https://zhuaiice.github.io/post/linux-ji-chu-zhi-shi/</id>
+        <link href="https://zhuaiice.github.io/post/linux-ji-chu-zhi-shi/">
+        </link>
+        <updated>2021-10-16T11:42:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>🐲<strong>文件 / 文件夹管理</strong></p>
+<pre><code class="language-python">1. ls		列出当前目录下所有文件
+2. ls -a 	列出当前目录所有文件（包括隐藏文件）
+3. ls -l	列出每个文件的详细信息
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<p>🐲<strong>文件 / 文件夹管理</strong></p>
+<pre><code class="language-python">1. ls		列出当前目录下所有文件
+2. ls -a 	列出当前目录所有文件（包括隐藏文件）
+3. ls -l	列出每个文件的详细信息
+
+&lt;!-- more --&gt;
+4. cd ..	返回上级目录
+5. cd - 	返回上一次打开的目录
+6. cd ~		返回主目录
+7. cd //	返回根目录
+8. mkdir test	创建名为test的文件夹
+9. rm -rf test	删除test文件夹和其下所有文件（-r是递归，-f是强制）
+10. mv test /var/test	把test文件夹移动到var目录下
+11. mv	test test1		把test文件夹重命名为test1，该方法适用于文件重命名
+</code></pre>
+<p><strong>查看信息 / 开关服务</strong></p>
+<pre><code class="language-python">1. sudo service apache start-stop-restart	开启-关闭-重启apache服务，记得加上sudo，不然权限不够无法启动，如果要开启别的服务比如mysql，直接把apache改成mysql即可（如果不记得mysql密码，cat /etc/mysql/debian.cnf 里面明文存储mysql密码）
+2. sudo /etc/init.d/apahce start-stop-restart	同上，如果要开启别的服务比如mysql，直接把apache改成mysql即可
+3. uname -a 				查看内核版本
+4. cat /etc/issue			查看系统版本
+5. hostname					查看系统
+6. cat /proc/cpuinfo		查看CPU信息
+7. sudo ethtool eth0		查看网卡状态
+8. sudo fdisk -l			查看磁盘信息
+9. lshw						查看硬件信息
+10. df -h					查看剩余空间
+11. free -m					查看内存使用情况
+12. ps -A					查看所有进程
+13. kill pid&amp;kill name		结束进程，pid是在ps -A查看对应的数字，name即是进程名
+14. du -hs					查看当前目录大小
+15. find . -name 'xxx.py'	寻找文件，文件名可以使用通配符*
+16. mysql \.				登陆mysql后，输入\\. var/sqlsetup.sql(sql文件路径)即可安装sql文件 
+17. top/w					查看负载，w后面三个值表示近1分钟，10,15分钟的负载，一般来说0.6是标准健康值
+18. grep					匹配文件
+19. wc -l					统计文件个数
+20. |						把上一个命令的值传递个下一个命令，比如grep '11' xxx.txt|wc -l
+</code></pre>
+<p><strong>打包 / 解压缩</strong></p>
+<pre><code class="language-python">1. tar 
+	1. tar -c 创建包
+	2. tar -x 释放包
+	3. tar -v 显示过程信息
+	4. tar -z 代表压缩包
+2. tar --zcvf dabao.tar.gz /var/bin      把/var/bin目录打包压缩成dabao.tar.gz
+3. tar --zxvf dabao.tar.gz				 把dabao.tar.gz解压出来
+</code></pre>
+<p><strong>安装软件</strong><br>
+Linux 安装软件有两种方式，第一种是直接在线安装（使用 apt-get），第二种是下载到本地然后手动安装（使用 dpkg -i xxxx.deb）。</p>
+<pre><code class="language-python">安装软件包
+dpkg -i package.deb     //安装本地软件包，不解决依赖关系
+apt-get install package  //在线安装软件包
+</code></pre>
+<p>软件安装后相关文件位置</p>
+<pre><code class="language-python">1.下载的软件包存放位置
+/var/cache/apt/archives
+
+2.安装后软件默认位置
+/usr/share
+
+3.可执行文件位置
+/usr/bin
+
+4.配置文件位置
+/etc
+
+5.lib文件位置
+/usr/lib
+</code></pre>
+<p><strong>详细命令</strong></p>
+<pre><code class="language-python">1. apt-cache serach package				搜索包
+2. apt-cache show package				显示这个包的详细信息，比如大小版本说明等
+3. sudo apt-get install package			在线安装包
+4. sudo apt-get install package --reinstall		重新在线安装这个包
+5. sudo apt-get remove package			删除这个包
+6. sudo apt-get remove package --purge	删除这个包和这个包的相关配置文件
+7. sudo apt-get update					更新源，在安装新的包之间要先编辑对应的源地址
+8. sudo apt-get upgrade					更新与源对应的所有文件包
+9. apt-cache depends package			查看这个包需要依赖的包
+10. apt-cache rdepends package			查看这个包被哪些包所依赖
+11. sudo apt-get build-dep package		安装相关的编译环境
+12. sudo apt-get clean &amp;&amp; sudo apt-get autoclean	删除不用的包（清理/var/cacheapt/archive中的deb缓存文件）
+13. sudo apt-get check					检查室友有损坏的依赖包
+</code></pre>
+<p><strong>dkpg 安装删除包</strong></p>
+<pre><code class="language-python">1.  dpkg -i package-file-name		安装包
+2.  sudo apt-get install -f根据经验，通常情况下会报依赖关系的错误，我们可以使用以下的命令修复安装。
+2.  dpkg -r package-file-name		删除包
+3.  sudo dpkg -l					查看已经安装的软件
+3.  dpkg -l | grep 'package-file-name'	检查这个包的状态
+4.  dpkg -P package-file-name		表示彻底卸载软件包（包括配置文件）
+</code></pre>
+<p><strong>apt-get 安装删除包</strong></p>
+<pre><code class="language-python">1. 安装新的文件一般要编辑对应的源文件，比如：
+	leafpad /etc/apt/sources.list  查看使用的源，更新编辑源
+2. sudo apt-get update   				更新软件源
+3. sudo apt-get upgrade					更新对应源的所有文件
+4. sudo apt-get install package			安装包
+5. sudo apt-get --reinstall install package		重新安装这个包
+5. sudo apt-get remove package			卸载删除包
+6. sudo apt-get autoremove package		自动卸载软件但保留其配置文件
+7. sudo apt-get autoremove --purge package	自动卸载软件其删除其配置文件
+
+tips: 5	一般用于卸载本地安装的软件，6&amp;7 一般用于在线安装的软件
+</code></pre>
+<p><strong>最佳方法删除与安装包</strong><br>
+通过上面的方法基本上都可以删除安装包，但是过程有些累赘，其中有一小步出错后后面就更加让人头疼，在 Linux 下有一个专门管理安装包的应用，aptitude。<br>
+aptitude 在处理依赖问题上更佳一些。举例来说，aptitude 在删除一个包时，会同时删除本身所依赖的包。这样，系统中不会残留无用的包，整个系统更为干净。<br>
+需要注意的是，与 apt 一样，安装新的软件之前要跟新源哦～<br>
+首先更新源文件</p>
+<pre><code class="language-python">mv /etc/apt/sources.list /etc/apt/sources.list.bak   # 先备份一下
+sudo nano /etc/apt/sources.list						 # 编辑文件
+# 然后加上下面这些源地址
+deb http://mirrors.163.com/debian/ jessie main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+# 更新一下
+apt-get update
+apt-get upgrade
+# 安装apttitude
+sudo apt-get install apttitude
+# 举个例子，检索并删除PHP
+sudo aptitude purge `dpkg -l | grep php| awk '{print $2}' |tr &quot;\n&quot; &quot; &quot;`
+# 这样，就完全删除了PHP
+# 然后我在安装PHP，使用apt-get与apttitude一样，我使用apt-get....
+sudo apt-get install php5 php-pear php5-mysql php5-gd
+</code></pre>
+<p><strong>aptitude 常用命令</strong></p>
+<pre><code class="language-python">aptitude update            更新可用的包列表
+aptitude safe-upgrade      执行一次安全的升级
+aptitude full-upgrade      将系统升级到新的发行版
+aptitude install pkgname   安装包
+aptitude remove pkgname    删除包
+aptitude purge pkgname     删除包及其配置文件
+aptitude search string     搜索包
+aptitude show pkgname      显示包的详细信息
+aptitude clean             删除下载的包文件
+aptitude autoclean         仅删除过期的包文件
+
+i: 安装软件包   
+c: 软件包没有安装，但在系统中有软件包的残留配置   
+p: 从系统彻底删除   
+v: 虚拟软件包   
+B: 已损坏的软件包   
+u: 解压文件，但尚未配置软件包   
+C: 半配置 - 配置失败需要修复   
+H: 半安装 - 卸载失败需要修复 
+</code></pre>
+<p>tips: 使用 aptitude 可以解决 python 使用 pip 安装包的时候包的依赖问题：，如安装 scipy，matplotlib 的时候出现依赖包，自己去安装比较麻烦的问题：<br>
+如：sudo aptitude install python-scipy ; sudo aptitude install python-matplotlib<br>
+<strong>文件权限问题</strong><br>
+Linux 对文件权限管理很严格，其所对应的概念如下：</p>
+<pre><code class="language-python">w:可写
+r：可读
+x：可执行
+a:可追加
+</code></pre>
+<p>使用 ls -l 可以查看每个文件的权限，如果需要修改权限可以这么做</p>
+<pre><code class="language-python">chmod u+r xxx.py
+</code></pre>
+<p>这样 xx.py 就有了可读的权限，若要有读写权限使用 u+wr 即可，如果要删除相关的权限使用 u-wr 即可。另一种方式使用数字对应的 u+r，比如最常见的 chomd 777 xxx.py,r 对应 4，w 对应 2，有点麻烦不好记忆，使用 u+r 就可以了。</p>
+<h1 id="系统用户操作命令">系统用户操作命令</h1>
+<h2 id="添加用户">添加用户</h2>
+<pre><code class="language-python">useradd
+adduser
+example : adduser langzi
+		  passwd  123456
+		  添加用户密码
+</code></pre>
+<p><strong>删除用户</strong></p>
+<pre><code class="language-python">userdel
+example： userdel -r langzi
+</code></pre>
+<p><strong>设置密码</strong></p>
+<pre><code class="language-python">passwd
+</code></pre>
+<p><strong>注意</strong><br>
+useradd 与 adduser 都是创建新的用户<br>
+在 CentOs 下 useradd 与 adduser 是没有区别的都是在创建用户，在 home 下自动创建目录，没有设置密码，需要使用 passwd 命令修改密码。<br>
+而在 Ubuntu/Debian 下 useradd 与 adduser 有所不同<br>
+1、useradd 在使用该命令创建用户是不会在 /home 下自动创建与用户名同名的用户目录，而且不会自动选择 shell 版本，也没有设置密码，那么这个用户是不能登录的，需要使用 passwd 命令修改密码。<br>
+2、adduser 在使用该命令创建用户是会在 /home 下自动创建与用户名同名的用户目录，系统 shell 版本，会在创建时会提示输入密码，更加友好。<br>
+userdel 只能删除用户，并不会删除相关的目录文件。userdel -r 可以删除用户及相关目录。<br>
+<strong>快捷键</strong><br>
+Linux 下使用鼠标机会不多，尽量多记住一些快捷键，在工作或者学习的时候能提高效率。</p>
+<pre><code>1.前一个后一个工作区的切换
+如果你经常使用工作区，那你就可以用 Ctrl + Alt + 上 / 下方向键很容易地进行切换。左箭头切换到上一个工作区，右箭头切换到下一个工作区。
+2.把当前窗口移到另一个工作区
+快捷键 Shift+ Ctrl + Alt + 左 / 右方向键让你很容易把当前窗口移到指定的工作区。这个快捷键和上面的快捷键很好配合。如果你工作时常常打开很多窗口，但又不想看到桌面 和任务栏挤满程序，你可以用这个快捷键把程序移到另 一个工作区，这样你的桌面就整洁多了。
+3.显示桌面
+Ctrl + Alt + D 快捷键让你很快地最小化所有窗口，看到桌面。当所有窗口都最小化后，你再按这个快捷键就可以恢复窗口原来的状态。
+4.鼠标右击的键盘快捷键
+在大多数程序里，你可以右击显示快捷菜单。其实键盘上 Shift + F10 也能达到一样的效果。
+5.重启会话以从崩溃中恢复
+按下 Ctrl + Alt + Backspace 来重启会话，恢复的可能达 90%。
+6.快速锁定屏幕
+如果你需要离开 电脑 一会儿，可以按下 Ctrl + Alt + L 很快地锁定屏幕，以防有人使用
+7.反向切换窗口
+Alt + Tab 是切换窗口的快捷键。如果你再按下 SHIft，你就可以反向切换窗口。这个快捷键很有用，当你 Alt + Tab 按得太快，错过了你想要切换的窗口，按一下 shift 就可以返回之前的窗口了。
+8.用方向键移动窗口
+Alt+F7 会激活移动窗口 功能 ，用方向键（上，下，左，右）就可以移到窗口了。
+编辑文本快捷键使用</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -48,7 +568,7 @@
         <id>https://zhuaiice.github.io/post/zai-xian-zi-yuan-lin-shi-shou-ji/</id>
         <link href="https://zhuaiice.github.io/post/zai-xian-zi-yuan-lin-shi-shou-ji/">
         </link>
-        <updated>2021-09-27T06:38:01.000Z</updated>
+        <updated>2021-10-16T03:07:49.000Z</updated>
         <summary type="html"><![CDATA[<h2 id="在线视频">🌟在线视频</h2>
 <ol>
 <li><a href="http://1090ys2.com/">1090影视</a></li>
@@ -88,10 +608,50 @@
 <li><a href="https://fuliba2021.net/">福利吧网站</a></li>
 <li><a href="https://yun.hei521.cn/">天翼网盘分享</a></li>
 <li><a href="http://alipan.vip/">阿里云盘资源搜索</a></li>
+<li><a href="https://www.alipanso.com/">阿里盘搜</a></li>
 <li>待添加......
 <hr>
 </li>
 </ol>
+<h2 id="其他在线工具">🦋其他在线工具</h2>
+<ol>
+<li><a href="https://image.so.com/editor">在线图片无损放大</a></li>
+<li>待添加......</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[火绒规则使用说明]]></title>
+        <id>https://zhuaiice.github.io/post/huo-rong-gui-ze-shi-yong-shuo-ming/</id>
+        <link href="https://zhuaiice.github.io/post/huo-rong-gui-ze-shi-yong-shuo-ming/">
+        </link>
+        <updated>2021-10-16T02:41:18.000Z</updated>
+        <summary type="html"><![CDATA[<p>✅<strong>自定义规则、自动处理使用方法：</strong></p>
+<ol>
+<li>下载安装火绒安全，进入防护中心--&gt;高级防护，将“自定义防护”开关打开；</li>
+<li>进入自定义防护，点击“自定义规则”页面下方的“导入”按钮，导入“自定义规则.json”即可；</li>
+<li>再切到“自动处理”页面，点击下方的“导入”按钮，导入“自动处理.json”即可；</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<p>✅<strong>自定义规则、自动处理使用方法：</strong></p>
+<ol>
+<li>下载安装火绒安全，进入防护中心--&gt;高级防护，将“自定义防护”开关打开；</li>
+<li>进入自定义防护，点击“自定义规则”页面下方的“导入”按钮，导入“自定义规则.json”即可；</li>
+<li>再切到“自动处理”页面，点击下方的“导入”按钮，导入“自动处理.json”即可；</li>
+</ol>
+<!-- more -->
+<p><img src="https://zhuaiice.github.io/post-images/1634352220215.png" alt="" loading="lazy"><br>
+✅<strong>程序联网控制自定义处理规则使用方法</strong></p>
+<ol>
+<li>打开火绒，进入防护中心--&gt;系统防护，将“联网控制”开关打开；</li>
+<li>进入联网控制，点击下方的“联网设置”，新程序联网时选择“允许联网”，保存；</li>
+<li>再点击“导入”按钮，导入“联网控制.json”即可。<br>
+<img src="https://zhuaiice.github.io/post-images/1634352534728.png" alt="" loading="lazy"></li>
+</ol>
+<hr>
+<p>✅<strong>52pojie网友自定义规则更新链接：</strong><br>
+蓝奏云链接：https://dustinwinvip.lanzoui.com/b01ocqaaj<br>
+密码：zdgz</p>
 ]]></content>
     </entry>
 </feed>

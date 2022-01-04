@@ -1,0 +1,424 @@
+<html>
+
+<head>
+    <!-- 防止浏览器缓存 -->
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate"> 
+<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+
+<!-- ?????? -->
+    
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Linux基础知识 | 隐藏的位面
+</title>
+<link rel="shortcut icon" href="https://zhuaiice.github.io/favicon.ico?v=1641276875020">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.11.1/katex.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zhuaiice.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://zhuaiice.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+
+    
+</head>
+
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://zhuaiice.github.io">
+                <img class="avatar" src="https://zhuaiice.github.io/images/avatar.png?v=1641276875020" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    隐藏的位面
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+        <div id="main-content" class="post-detail main-container">
+            <!-- left -->
+            <div id="content" class="main-container-left">
+                <article class="post i-card">
+                    <h2 class="post-title">
+                        Linux基础知识
+                    </h2>
+                    <div class="post-info">
+                        <time class="post-time">2021-10-16</time>
+                        
+                    </div>
+                    
+                    <div class="post-content">
+                        <p>🐲<strong>文件 / 文件夹管理</strong></p>
+<pre><code class="language-python">1. ls		列出当前目录下所有文件
+2. ls -a 	列出当前目录所有文件（包括隐藏文件）
+3. ls -l	列出每个文件的详细信息
+
+&lt;!-- more --&gt;
+4. cd ..	返回上级目录
+5. cd - 	返回上一次打开的目录
+6. cd ~		返回主目录
+7. cd //	返回根目录
+8. mkdir test	创建名为test的文件夹
+9. rm -rf test	删除test文件夹和其下所有文件（-r是递归，-f是强制）
+10. mv test /var/test	把test文件夹移动到var目录下
+11. mv	test test1		把test文件夹重命名为test1，该方法适用于文件重命名
+</code></pre>
+<p><strong>查看信息 / 开关服务</strong></p>
+<pre><code class="language-python">1. sudo service apache start-stop-restart	开启-关闭-重启apache服务，记得加上sudo，不然权限不够无法启动，如果要开启别的服务比如mysql，直接把apache改成mysql即可（如果不记得mysql密码，cat /etc/mysql/debian.cnf 里面明文存储mysql密码）
+2. sudo /etc/init.d/apahce start-stop-restart	同上，如果要开启别的服务比如mysql，直接把apache改成mysql即可
+3. uname -a 				查看内核版本
+4. cat /etc/issue			查看系统版本
+5. hostname					查看系统
+6. cat /proc/cpuinfo		查看CPU信息
+7. sudo ethtool eth0		查看网卡状态
+8. sudo fdisk -l			查看磁盘信息
+9. lshw						查看硬件信息
+10. df -h					查看剩余空间
+11. free -m					查看内存使用情况
+12. ps -A					查看所有进程
+13. kill pid&amp;kill name		结束进程，pid是在ps -A查看对应的数字，name即是进程名
+14. du -hs					查看当前目录大小
+15. find . -name 'xxx.py'	寻找文件，文件名可以使用通配符*
+16. mysql \.				登陆mysql后，输入\\. var/sqlsetup.sql(sql文件路径)即可安装sql文件 
+17. top/w					查看负载，w后面三个值表示近1分钟，10,15分钟的负载，一般来说0.6是标准健康值
+18. grep					匹配文件
+19. wc -l					统计文件个数
+20. |						把上一个命令的值传递个下一个命令，比如grep '11' xxx.txt|wc -l
+</code></pre>
+<p><strong>打包 / 解压缩</strong></p>
+<pre><code class="language-python">1. tar 
+	1. tar -c 创建包
+	2. tar -x 释放包
+	3. tar -v 显示过程信息
+	4. tar -z 代表压缩包
+2. tar --zcvf dabao.tar.gz /var/bin      把/var/bin目录打包压缩成dabao.tar.gz
+3. tar --zxvf dabao.tar.gz				 把dabao.tar.gz解压出来
+</code></pre>
+<p><strong>安装软件</strong><br>
+Linux 安装软件有两种方式，第一种是直接在线安装（使用 apt-get），第二种是下载到本地然后手动安装（使用 dpkg -i xxxx.deb）。</p>
+<pre><code class="language-python">安装软件包
+dpkg -i package.deb     //安装本地软件包，不解决依赖关系
+apt-get install package  //在线安装软件包
+</code></pre>
+<p>软件安装后相关文件位置</p>
+<pre><code class="language-python">1.下载的软件包存放位置
+/var/cache/apt/archives
+
+2.安装后软件默认位置
+/usr/share
+
+3.可执行文件位置
+/usr/bin
+
+4.配置文件位置
+/etc
+
+5.lib文件位置
+/usr/lib
+</code></pre>
+<p><strong>详细命令</strong></p>
+<pre><code class="language-python">1. apt-cache serach package				搜索包
+2. apt-cache show package				显示这个包的详细信息，比如大小版本说明等
+3. sudo apt-get install package			在线安装包
+4. sudo apt-get install package --reinstall		重新在线安装这个包
+5. sudo apt-get remove package			删除这个包
+6. sudo apt-get remove package --purge	删除这个包和这个包的相关配置文件
+7. sudo apt-get update					更新源，在安装新的包之间要先编辑对应的源地址
+8. sudo apt-get upgrade					更新与源对应的所有文件包
+9. apt-cache depends package			查看这个包需要依赖的包
+10. apt-cache rdepends package			查看这个包被哪些包所依赖
+11. sudo apt-get build-dep package		安装相关的编译环境
+12. sudo apt-get clean &amp;&amp; sudo apt-get autoclean	删除不用的包（清理/var/cacheapt/archive中的deb缓存文件）
+13. sudo apt-get check					检查室友有损坏的依赖包
+</code></pre>
+<p><strong>dkpg 安装删除包</strong></p>
+<pre><code class="language-python">1.  dpkg -i package-file-name		安装包
+2.  sudo apt-get install -f根据经验，通常情况下会报依赖关系的错误，我们可以使用以下的命令修复安装。
+2.  dpkg -r package-file-name		删除包
+3.  sudo dpkg -l					查看已经安装的软件
+3.  dpkg -l | grep 'package-file-name'	检查这个包的状态
+4.  dpkg -P package-file-name		表示彻底卸载软件包（包括配置文件）
+</code></pre>
+<p><strong>apt-get 安装删除包</strong></p>
+<pre><code class="language-python">1. 安装新的文件一般要编辑对应的源文件，比如：
+	leafpad /etc/apt/sources.list  查看使用的源，更新编辑源
+2. sudo apt-get update   				更新软件源
+3. sudo apt-get upgrade					更新对应源的所有文件
+4. sudo apt-get install package			安装包
+5. sudo apt-get --reinstall install package		重新安装这个包
+5. sudo apt-get remove package			卸载删除包
+6. sudo apt-get autoremove package		自动卸载软件但保留其配置文件
+7. sudo apt-get autoremove --purge package	自动卸载软件其删除其配置文件
+
+tips: 5	一般用于卸载本地安装的软件，6&amp;7 一般用于在线安装的软件
+</code></pre>
+<p><strong>最佳方法删除与安装包</strong><br>
+通过上面的方法基本上都可以删除安装包，但是过程有些累赘，其中有一小步出错后后面就更加让人头疼，在 Linux 下有一个专门管理安装包的应用，aptitude。<br>
+aptitude 在处理依赖问题上更佳一些。举例来说，aptitude 在删除一个包时，会同时删除本身所依赖的包。这样，系统中不会残留无用的包，整个系统更为干净。<br>
+需要注意的是，与 apt 一样，安装新的软件之前要跟新源哦～<br>
+首先更新源文件</p>
+<pre><code class="language-python">mv /etc/apt/sources.list /etc/apt/sources.list.bak   # 先备份一下
+sudo nano /etc/apt/sources.list						 # 编辑文件
+# 然后加上下面这些源地址
+deb http://mirrors.163.com/debian/ jessie main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-updates main non-free contrib
+deb-src http://mirrors.163.com/debian/ jessie-backports main non-free contrib
+deb http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+deb-src http://mirrors.163.com/debian-security/ jessie/updates main non-free contrib
+# 更新一下
+apt-get update
+apt-get upgrade
+# 安装apttitude
+sudo apt-get install apttitude
+# 举个例子，检索并删除PHP
+sudo aptitude purge `dpkg -l | grep php| awk '{print $2}' |tr &quot;\n&quot; &quot; &quot;`
+# 这样，就完全删除了PHP
+# 然后我在安装PHP，使用apt-get与apttitude一样，我使用apt-get....
+sudo apt-get install php5 php-pear php5-mysql php5-gd
+</code></pre>
+<p><strong>aptitude 常用命令</strong></p>
+<pre><code class="language-python">aptitude update            更新可用的包列表
+aptitude safe-upgrade      执行一次安全的升级
+aptitude full-upgrade      将系统升级到新的发行版
+aptitude install pkgname   安装包
+aptitude remove pkgname    删除包
+aptitude purge pkgname     删除包及其配置文件
+aptitude search string     搜索包
+aptitude show pkgname      显示包的详细信息
+aptitude clean             删除下载的包文件
+aptitude autoclean         仅删除过期的包文件
+
+i: 安装软件包   
+c: 软件包没有安装，但在系统中有软件包的残留配置   
+p: 从系统彻底删除   
+v: 虚拟软件包   
+B: 已损坏的软件包   
+u: 解压文件，但尚未配置软件包   
+C: 半配置 - 配置失败需要修复   
+H: 半安装 - 卸载失败需要修复 
+</code></pre>
+<p>tips: 使用 aptitude 可以解决 python 使用 pip 安装包的时候包的依赖问题：，如安装 scipy，matplotlib 的时候出现依赖包，自己去安装比较麻烦的问题：<br>
+如：sudo aptitude install python-scipy ; sudo aptitude install python-matplotlib<br>
+<strong>文件权限问题</strong><br>
+Linux 对文件权限管理很严格，其所对应的概念如下：</p>
+<pre><code class="language-python">w:可写
+r：可读
+x：可执行
+a:可追加
+</code></pre>
+<p>使用 ls -l 可以查看每个文件的权限，如果需要修改权限可以这么做</p>
+<pre><code class="language-python">chmod u+r xxx.py
+</code></pre>
+<p>这样 xx.py 就有了可读的权限，若要有读写权限使用 u+wr 即可，如果要删除相关的权限使用 u-wr 即可。另一种方式使用数字对应的 u+r，比如最常见的 chomd 777 xxx.py,r 对应 4，w 对应 2，有点麻烦不好记忆，使用 u+r 就可以了。</p>
+<h1 id="系统用户操作命令">系统用户操作命令</h1>
+<h2 id="添加用户">添加用户</h2>
+<pre><code class="language-python">useradd
+adduser
+example : adduser langzi
+		  passwd  123456
+		  添加用户密码
+</code></pre>
+<p><strong>删除用户</strong></p>
+<pre><code class="language-python">userdel
+example： userdel -r langzi
+</code></pre>
+<p><strong>设置密码</strong></p>
+<pre><code class="language-python">passwd
+</code></pre>
+<p><strong>注意</strong><br>
+useradd 与 adduser 都是创建新的用户<br>
+在 CentOs 下 useradd 与 adduser 是没有区别的都是在创建用户，在 home 下自动创建目录，没有设置密码，需要使用 passwd 命令修改密码。<br>
+而在 Ubuntu/Debian 下 useradd 与 adduser 有所不同<br>
+1、useradd 在使用该命令创建用户是不会在 /home 下自动创建与用户名同名的用户目录，而且不会自动选择 shell 版本，也没有设置密码，那么这个用户是不能登录的，需要使用 passwd 命令修改密码。<br>
+2、adduser 在使用该命令创建用户是会在 /home 下自动创建与用户名同名的用户目录，系统 shell 版本，会在创建时会提示输入密码，更加友好。<br>
+userdel 只能删除用户，并不会删除相关的目录文件。userdel -r 可以删除用户及相关目录。<br>
+<strong>快捷键</strong><br>
+Linux 下使用鼠标机会不多，尽量多记住一些快捷键，在工作或者学习的时候能提高效率。</p>
+<pre><code>1.前一个后一个工作区的切换
+如果你经常使用工作区，那你就可以用 Ctrl + Alt + 上 / 下方向键很容易地进行切换。左箭头切换到上一个工作区，右箭头切换到下一个工作区。
+2.把当前窗口移到另一个工作区
+快捷键 Shift+ Ctrl + Alt + 左 / 右方向键让你很容易把当前窗口移到指定的工作区。这个快捷键和上面的快捷键很好配合。如果你工作时常常打开很多窗口，但又不想看到桌面 和任务栏挤满程序，你可以用这个快捷键把程序移到另 一个工作区，这样你的桌面就整洁多了。
+3.显示桌面
+Ctrl + Alt + D 快捷键让你很快地最小化所有窗口，看到桌面。当所有窗口都最小化后，你再按这个快捷键就可以恢复窗口原来的状态。
+4.鼠标右击的键盘快捷键
+在大多数程序里，你可以右击显示快捷菜单。其实键盘上 Shift + F10 也能达到一样的效果。
+5.重启会话以从崩溃中恢复
+按下 Ctrl + Alt + Backspace 来重启会话，恢复的可能达 90%。
+6.快速锁定屏幕
+如果你需要离开 电脑 一会儿，可以按下 Ctrl + Alt + L 很快地锁定屏幕，以防有人使用
+7.反向切换窗口
+Alt + Tab 是切换窗口的快捷键。如果你再按下 SHIft，你就可以反向切换窗口。这个快捷键很有用，当你 Alt + Tab 按得太快，错过了你想要切换的窗口，按一下 shift 就可以返回之前的窗口了。
+8.用方向键移动窗口
+Alt+F7 会激活移动窗口 功能 ，用方向键（上，下，左，右）就可以移到窗口了。
+编辑文本快捷键使用</code></pre>
+
+                    </div>
+                </article>
+                <!--  -->
+                
+                <div class="next-post">
+                    <div class="next">下一篇</div>
+                    <a href="https://zhuaiice.github.io/post/zai-xian-zi-yuan-lin-shi-shou-ji/">
+                        <h3 class="post-title">
+                            在线资源临时收集
+                        </h3>
+                    </a>
+                </div>
+                
+                <div id="disqus_thread"></div>
+                <div id="gitalk-container"></div>
+                <div id="vcomments"></div>
+                <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> |
+  <a class="rss" href="https://zhuaiice.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+            </div>
+            <!-- middle -->
+            <div class="main-container-middle"></div>
+            <!-- right -->
+            <div id="sidebar" class="main-container-right">
+                
+                <!-- toc -->
+                
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E7%B3%BB%E7%BB%9F%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4">系统用户操作命令</a>
+<ul>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7">添加用户</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                
+
+                </div>
+            </div>
+
+            </div>
+            <script>
+                $('#sidebar').stickySidebar({
+                    topSpacing: 80,
+                    // bottomSpacing: 60
+                });
+            </script>
+            <!-- ?????? -->
+            <script>
+                hljs.initHighlightingOnLoad()
+              </script>
+            
+</body>
+
+</html>
